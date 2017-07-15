@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;
 
@@ -35,6 +36,29 @@ var userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Task"
   }]
+
+//implementing bcruyt here
+  UserSchema.methods.comparePassword = function comparePassword(password, callback) {
+    bcrypt.compare(password, this.password, callback);
+  };
+
+  UserSchema.pre('save', function saveHook(next) {
+    var user = this;
+    
+    if (!user.isModified('password')) return next();
+    
+    return bcrypt.genSalt((saltError, salt) => {
+      if (saltError) { return next(saltError); 
+    }
+
+    return bcrypt.hash(user.password, salt, (hashError, hash) => {
+      if (hashError) { return next(hashError); 
+    }
+
+    user.password = hash;
+
+    return next();
+  }
 
 });
 
