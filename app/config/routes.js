@@ -1,25 +1,28 @@
-import React from "react";
-import { Route, IndexRoute, Router, browserHistory } from "react-router";
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
 
-import Main from '../components/Main';
-import Todohome from '../components/Todohome';
+import Template from '../components/Main';
+import Home from '../components/Todohome';
+import AddTask from '../components/Addtask';
 import Admin from '../components/Admin';
-import Addtask from '../components/Addtask';
 import UserAdmin from '../components/UserAdmin';
-import SignUpPage from '../components/SignUpPage.jsx';
-import LoginPage from '../components/LoginPage.jsx';
+import Login from '../components/Login';
+import SignUp from '../components/SignUp';
 
-const routes = (
-  <Router history={broserHisotry}>
-    <Route path="/" component={Main}>
-      <Route path="admin" component={Admin} />
-      <Route path="add" component={Addtask} />
-      <Route path="user" component={UserAdmin} />
-       <Route path="login" component={LoginPage} />
-      <Route path="signup" component={SignUpPage} />
-      <IndexRoute component={Todohome} />
-    </Route>
-  </Router>
-);
+const createRoutes = () => {
+  return (
+    <Route path="/" component={Template}>
+      <IndexRoute component={Home} />
+      <Route path="/addtask" component={AddTask} />
+      <Route path="/admin" component={Admin} />
+      <Route path="/useradmin" component={UserAdmin} />
+      <Route path="/logout" component={Template} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={SignUp} />
+     </Route>
+  )
+};
 
-export default routes;
+const Navigation = createRoutes();
+
+export default Navigation;
