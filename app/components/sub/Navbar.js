@@ -14,8 +14,8 @@ const Navbar = () => {
      <br/>
         <ul className="nav nav-pills nav-stacked">
           <li><Link to='/logout'>Logout</Link></li>
-          <li><Link to='/login'>Login</Link></li>
-          <li><Link to='/signup'>Create Account</Link></li>
+          <li><Link to='/login/user'>Login</Link></li>
+          <li><Link to='/signup/user'>Create Account</Link></li>
         </ul>
       </div>
     )

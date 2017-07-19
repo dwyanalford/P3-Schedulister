@@ -42,7 +42,7 @@ class Loginv2 extends React.Component {
 
   render() {
     return (
-      <div className="panel panel-default" onSubmit={this.handleSubmit} action="/#/user/login" method="post">
+      <div className="panel panel-default" onSubmit={this.handleSubmit} action="/login/user" method="post">
       <div className="panel-heading">
         <h3 className="panel-title">Welcome!</h3>
       </div>
@@ -62,7 +62,7 @@ class Loginv2 extends React.Component {
             <button type="submit" className="btn btn-primary">Login</button>  &nbsp;
             <button type="submit" className="btn btn-danger">Cancel</button> 
           <br/>
-          <a href="/#/user/signup">Click here to create a new account</a>
+          <a href="/#/signup/user">Click here to create a new account</a>
         </div>
         </form>
       </div>

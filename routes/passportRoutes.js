@@ -7,12 +7,12 @@ var User = require('../models/User');
 //Get Routes
 //Signup
 
-passpt.get('/signup', function(req,res){
-  res.render('/signup');
+passpt.get('/signup/user', function(req,res){
+  res.direct('/signup/user');
 });
 
 //Login
-passpt.get('/login', function(req, res, next) {
+passpt.get('/login/user', function(req, res, next) {
   if(req.isAuthenticated()){
     return next();
   }else {
@@ -23,7 +23,7 @@ passpt.get('/login', function(req, res, next) {
 
 //POST Routes
 //Create new user
-passpt.post('/signup', function(req,res) {
+passpt.post('/signup/user', function(req,res) {
 	var username=req.body.username;
   var email=req.body.email;
 	var password=req.body.password;

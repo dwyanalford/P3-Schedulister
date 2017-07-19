@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router';
+
 const user= {
 	username: '',
 	email:'',
@@ -29,12 +31,16 @@ class SignUp extends React.Component {
 
   handleSubmit(event) {
   	event.preventDefault();
-    let body = JSON.stringify({
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.password,
-        passwordc: this.state.passwordc
-      })
+    console.log("helpme");
+    const { username, email, password, passwordc } = this.state;
+    var body = {}
+    body={
+     username:username,
+     email: email,
+     password: password,
+     passwordc: passwordc
+    }
+     console.log(body);
   } 
 
     
@@ -46,7 +52,7 @@ class SignUp extends React.Component {
           <h3 className="panel-title">Welcome!</h3>
         </div>
         <div className="panel-body">
-          <form action="/signup" method="POST">
+          <form action="/signup/user"  onSubmit={this.handleSubmit} method="POST">
             <div className="form-group">
               <label>
                 Please enter a username for your account:
@@ -68,10 +74,10 @@ class SignUp extends React.Component {
                 <input type="password" className="form-control" name='passwordc' value={this.state.passwordc} onChange={this.handleChange} />
               </label>
               <br/>
-              <button type="submit" onSubmit={this.handleSubmit} className="btn btn-primary">Create Account</button>  &nbsp;
+              <button type="submit" className="btn btn-primary">Create Account</button>  &nbsp;
               <button type="submit" className="btn btn-danger">Cancel</button> 
               <br/>
-              <button><a href="/#/user/login">Already have an account? Click here to Login</a></button>
+              <button><a href="/#/login/user">Already have an account? Click here to Login</a></button>
             </div>
           </form>
         </div>

@@ -1,18 +1,17 @@
 var express = require("express");
-var passpt = new express.Router();
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
-// var passport = require('passport'), LocalStrategy = require('passport-http').BasicStrategy;
+
 var User = require('../models/User'); 
 
 //Get Routes
 //Signup
 
-passpt.get('/signup', function(req,res){
+passpt.get('/signup/user', function(req,res){
   res.render('/signup');
 });
 
 //Login
-passpt.get('/login', function(req, res, next) {
+passpt.get('/login/user', function(req, res, next) {
   if(req.isAuthenticated()){
     return next();
   }else {
@@ -65,7 +64,7 @@ passpt.post('/signup', function(req,res) {
 });
 
 //Passport Information
-passport.use(new LocalStrategy({
+passport.use('local-signup', new LocalStrategy({
         usernameField : 'username',
         passwordField : 'password',
         passReqToCallback : true
@@ -98,7 +97,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 //Login Authenticator
-passpt.post('/login',
+router.post('/login',
   passport.authenticate('local', { successRedirect: '/',
                                    failureRedirect: '/login',
                                    failureFlash: true }),

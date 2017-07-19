@@ -17,8 +17,8 @@ const createRoutes = () => {
       <Route path="/admin" component={Admin} />
       <Route path="/useradmin" component={UserAdmin} />
       <Route path="/logout" component={Template} />
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={SignUp} />
+      <Route path="/login/user" component={Login} />
+      <Route path="/signup/user" component={SignUp} />
      </Route>
   )
 };
